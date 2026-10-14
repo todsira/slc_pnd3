@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>บันทึกภาษีหัก ณ ที่จ่าย ภ.ง.ด.3 ศิลาชัยเจริญ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f7f7; --surface: #ffffff; --surface-2: #f8fafc; --line: #dbe4e3; --line-strong: #c6d3d2;
+    --text: #1c2733; --muted: #5d6b7a; --accent: #0f6466; --accent-hover: #0b4e50; --accent-ink: #ffffff;
+    --accent-soft: #e5f2f1; --head: #eff5f4; --warn: #8a5a12; --warn-soft: #fdf5e6; --danger: #b3261e;
+    --ok: #1e6b47; --shadow: 0 1px 2px rgba(20,35,55,.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12161b; --surface: #1a2027; --surface-2: #1f262e; --line: #2e3742; --line-strong: #3a4552;
+      --text: #e6ebf1; --muted: #9aa7b5; --accent: #5fc1b8; --accent-hover: #7dd0c8; --accent-ink: #082220;
+      --accent-soft: #17302e; --head: #1f2a2a; --warn: #e3b061; --warn-soft: #30281a; --danger: #ef8a80;
+      --ok: #6fc59a; --shadow: none;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12161b; --surface: #1a2027; --surface-2: #1f262e; --line: #2e3742; --line-strong: #3a4552;
+    --text: #e6ebf1; --muted: #9aa7b5; --accent: #5fc1b8; --accent-hover: #7dd0c8; --accent-ink: #082220;
+    --accent-soft: #17302e; --head: #1f2a2a; --warn: #e3b061; --warn-soft: #30281a; --danger: #ef8a80;
+    --ok: #6fc59a; --shadow: none;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.6 "IBM Plex Sans Thai", system-ui, sans-serif; }
+  .mono, .num { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  .num { text-align: right; white-space: nowrap; }
+
+  /* ---------- header band ---------- */
+  .topbar { background: var(--surface); border-top: 4px solid var(--accent); border-bottom: 1px solid var(--line); }
+  header { padding: 22px 16px 0; max-width: 1120px; margin: 0 auto;
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .eyebrow { font-size: 12.5px; letter-spacing: .04em; color: var(--accent); font-weight: 600; margin-bottom: 2px; }
+  header h1 { font-size: clamp(24px, 4vw, 30px); line-height: 1.3; margin: 0; font-weight: 600; color: var(--text); }
+  header .sub { color: var(--muted); font-size: 14px; margin-top: 4px; }
+  .header-actions { display: flex; gap: 8px; align-items: center; padding-top: 6px; }
+  .badge { font-size: 12.5px; padding: 3px 10px; border-radius: 4px; background: var(--warn-soft); color: var(--warn);
+    border: 1px solid color-mix(in srgb, var(--warn) 25%, transparent); }
+
+  /* ---------- page tabs (inside header band) ---------- */
+  .viewtabs { max-width: 1120px; margin: 14px auto 0; padding: 0 16px; display: flex; gap: 2px; flex-wrap: wrap; }
+  .viewtab { font: inherit; font-size: 15px; background: none; border: 0; color: var(--muted);
+    padding: 10px 16px 12px; cursor: pointer; white-space: nowrap; position: relative; }
+  .viewtab:hover { color: var(--text); }
+  .viewtab[aria-selected="true"] { color: var(--accent); font-weight: 600; }
+  .viewtab[aria-selected="true"]::after { content: ""; position: absolute; left: 10px; right: 10px; bottom: 0;
+    height: 3px; border-radius: 3px 3px 0 0; background: var(--accent); }
+  .viewtab:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; border-radius: 4px; }
+
+  main { max-width: 1120px; margin: 0 auto; padding: 22px 16px 56px; }
+  .view { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .view[hidden] { display: none; }
+
+  /* ---------- cards ---------- */
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
+  .card h2 { font-size: 17px; margin: 0; font-weight: 600; padding-left: 10px; border-left: 3px solid var(--accent); line-height: 1.3; }
+  .card-head { padding: 14px 20px; border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .card-body { padding: 20px; }
+  .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px 18px; }
+  .span-2 { grid-column: span 2; } .span-4 { grid-column: 1 / -1; }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } .span-2 { grid-column: 1 / -1; } }
+  @media (max-width: 460px) { .grid { grid-template-columns: 1fr; } }
+
+  /* ---------- form controls ---------- */
+  label { display: block; font-size: 13.5px; color: var(--text); font-weight: 500; margin-bottom: 6px; }
+  label small { color: var(--muted); font-weight: 400; }
+  input, select { width: 100%; font: inherit; color: var(--text); background: var(--surface);
+    border: 1px solid var(--line-strong); border-radius: 6px; padding: 9px 12px; min-height: 42px; }
+  input::placeholder { color: color-mix(in srgb, var(--muted) 70%, transparent); }
+  input:hover:not([readonly]), select:hover { border-color: var(--muted); }
+  input:focus, select:focus { outline: none; border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
+  input[readonly] { background: var(--surface-2); border-color: var(--line); color: var(--text); }
+  input.invalid { border-color: var(--danger); box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 14%, transparent); }
+  .readonly-strong { font-weight: 600; }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--line-strong); background: var(--surface); color: var(--text);
+    border-radius: 6px; padding: 8px 14px; font: inherit; cursor: pointer; min-height: 42px; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+  .chip[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); font-weight: 600; }
+  .hint { font-size: 12.5px; color: var(--muted); margin-top: 5px; }
+  .hint.warn { color: var(--warn); } .hint.ok { color: var(--ok); } .hint.err { color: var(--danger); }
+
+  /* ---------- buttons ---------- */
+  .actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 22px; padding-top: 18px;
+    border-top: 1px solid var(--line); flex-wrap: wrap; }
+  .btn { font: inherit; border-radius: 6px; padding: 9px 20px; border: 1px solid var(--line-strong);
+    background: var(--surface); color: var(--text); cursor: pointer; min-height: 42px; }
+  .btn:hover { background: var(--surface-2); border-color: var(--muted); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; min-width: 120px; }
+  .btn.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+  .btn.small { padding: 4px 12px; min-height: 32px; font-size: 13.5px; white-space: nowrap; }
+  .btn:disabled { opacity: .55; cursor: progress; }
+  .edit-banner { display: none; background: var(--warn-soft); color: var(--warn);
+    padding: 10px 20px; font-size: 14px; border-bottom: 1px solid var(--line); }
+  .editing .edit-banner { display: block; }
+  .editing { border-color: color-mix(in srgb, var(--warn) 45%, var(--line)); }
+
+  /* ---------- tables ---------- */
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tabs .chip { min-height: 34px; padding: 4px 12px; font-size: 14px; }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 10px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { font-weight: 600; color: var(--muted); font-size: 13px; background: var(--head); white-space: nowrap;
+    border-bottom-color: var(--line-strong); }
+  tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--head) 45%, transparent); }
+  tbody tr:hover td { background: var(--accent-soft); }
+  td.name { min-width: 220px; }
+  tr.is-editing td, tr.is-editing:hover td { background: var(--warn-soft); }
+  tr.is-new td { background: var(--accent-soft); }
+  .tag-off { display: inline-block; font-size: 12px; padding: 0 6px; border-radius: 4px; margin-left: 6px;
+    color: var(--muted); border: 1px solid var(--line-strong); vertical-align: 1px; }
+  tfoot td { font-weight: 600; background: var(--head); border-top: 2px solid var(--line-strong); border-bottom: 0; }
+  .empty { padding: 32px; text-align: center; color: var(--muted); }
+
+  /* ---------- system banner ---------- */
+  .sys-banner { background: #b3261e; color: #fff; padding: 12px 16px; font-size: 14px; line-height: 1.6; }
+  .sys-banner b { font-weight: 600; }
+
+  /* ---------- payee search box ---------- */
+  .combo { position: relative; }
+  .combo input { padding-right: 38px; }
+  .combo-toggle { position: absolute; right: 4px; top: 4px; bottom: 4px; width: 32px; border: 0;
+    background: none; color: var(--muted); cursor: pointer; font-size: 14px; }
+  .combo-list { position: absolute; z-index: 10; left: 0; right: 0; top: calc(100% + 4px); margin: 0; padding: 4px;
+    list-style: none; max-height: 300px; overflow-y: auto; background: var(--surface);
+    border: 1px solid var(--line-strong); border-radius: 6px; box-shadow: 0 8px 24px rgba(20,35,55,.12); }
+  .combo-list li { padding: 8px 10px; border-radius: 4px; cursor: pointer; display: flex; gap: 10px; align-items: baseline; }
+  .combo-list li .cid { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px; color: var(--muted); min-width: 64px; }
+  .combo-list li .ctax { margin-left: auto; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .combo-list li[aria-selected="true"], .combo-list li:hover { background: var(--accent-soft); }
+  .combo-list li.none { color: var(--muted); cursor: default; background: none; }
+  .combo-list mark { background: none; color: var(--accent); font-weight: 600; }
+  @media (max-width: 520px) { .combo-list li .ctax { display: none; } }
+
+  /* ---------- modal & toast ---------- */
+  .overlay { position: fixed; inset: 0; background: rgba(20,30,45,.38); display: none;
+    align-items: center; justify-content: center; padding: 16px; z-index: 20; }
+  .overlay.open { display: flex; }
+  .modal { background: var(--surface); border-radius: 8px; width: 100%; max-width: 480px;
+    border: 1px solid var(--line); border-top: 4px solid var(--accent); box-shadow: 0 20px 50px rgba(20,35,55,.22); }
+  .modal h3 { margin: 0; padding: 18px 22px 4px; font-size: 19px; font-weight: 600; }
+  .modal p { margin: 0; padding: 0 22px; color: var(--muted); font-size: 14px; }
+  .modal dl { margin: 16px 22px 0; padding: 12px 14px; background: var(--surface-2); border: 1px solid var(--line);
+    border-radius: 6px; display: grid; grid-template-columns: 140px 1fr; gap: 7px 12px; font-size: 14px; }
+  .modal dt { color: var(--muted); } .modal dd { margin: 0; font-weight: 500; word-break: break-word; }
+  .modal .actions { padding: 16px 22px 18px; margin-top: 18px; }
+  .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px);
+    background: var(--ok); color: #fff; padding: 11px 20px; border-radius: 6px; box-shadow: 0 8px 24px rgba(20,35,55,.2);
+    opacity: 0; transition: .2s; pointer-events: none; z-index: 30; max-width: calc(100% - 32px); }
+  .toast.show { opacity: 1; transform: translateX(-50%); }
+  .toast.error { background: var(--danger); color: #fff; }
+  @media (max-width: 460px) { .modal dl { grid-template-columns: 1fr; gap: 2px 0; } .modal dd { margin-bottom: 6px; } }
+</style>
+</head>
+<body>
+<div id="sysBanner" class="sys-banner" role="alert" hidden></div>
+<div class="topbar">
+<header>
+  <div>
+    <h1 id="appTitle">บันทึกภาษีหัก ณ ที่จ่าย ภ.ง.ด.3 ศิลาชัยเจริญ</h1>
+    <div class="sub">เพิ่มและแก้ไขรายการใน Google Sheet <span class="mono">Input</span> และ <span class="mono">Payee 3</span></div>
+  </div>
+  <div class="header-actions">
+    <span class="badge" id="demoBadge" hidden>โหมดทดลอง (ไม่บันทึกจริง)</span>
+    <button class="btn small" id="btnKey" type="button">ตั้งค่ารหัส</button>
+  </div>
+</header>
+<nav class="viewtabs" role="tablist">
+  <button type="button" role="tab" class="viewtab" data-view="wht" aria-selected="true">บันทึกรายการภาษี</button>
+  <button type="button" role="tab" class="viewtab" data-view="payee" aria-selected="false">เพิ่ม Payee ใหม่</button>
+  </nav>
+</div>
+
+<main>
+
+  <div id="viewWht" class="view">
+  <!-- ===== Form ===== -->
+  <section class="card" id="formCard">
+    <div class="card-head"><h2 id="formTitle">เพิ่มรายการใหม่</h2></div>
+    <div class="edit-banner" id="editBanner"></div>
+    <form class="card-body" id="entryForm" novalidate>
+      <div class="grid">
+        <div>
+          <label for="fRef">Ref <small>(อัตโนมัติ)</small></label>
+          <input id="fRef" class="mono readonly-strong" readonly>
+          <div class="hint" id="refHint">ปี พ.ศ. + เลขลำดับ 3 หลัก</div>
+        </div>
+        <div>
+          <label for="fDate">วันที่ (Date) <small>วว/ดด/ปปปป พ.ศ.</small></label>
+          <input id="fDate" class="mono" inputmode="numeric" placeholder="12/10/2569" maxlength="10" autocomplete="off">
+        </div>
+        <div class="span-2">
+          <label for="fPayeeInput">Payee ID <small>(พิมพ์ค้นหา ID / ชื่อ / เลขผู้เสียภาษี)</small></label>
+          <div class="combo" id="payeeCombo">
+            <input id="fPayeeInput" role="combobox" aria-expanded="false" aria-controls="fPayeeList"
+                   aria-autocomplete="list" autocomplete="off" placeholder="พิมพ์เพื่อค้นหาผู้รับเงิน…">
+            <button type="button" class="combo-toggle" id="fPayeeToggle" tabindex="-1" aria-label="แสดงรายชื่อทั้งหมด">▾</button>
+            <ul class="combo-list" id="fPayeeList" role="listbox" hidden></ul>
+          </div>
+          <select id="fPayee" hidden aria-hidden="true" tabindex="-1"><option value="">— เลือกผู้รับเงิน —</option></select>
+        </div>
+        <div class="span-4">
+          <label for="fName">ชื่อผู้มีเงินได้ (Name)</label>
+          <input id="fName" readonly placeholder="แสดงอัตโนมัติจาก Payee ID">
+        </div>
+        <div class="span-2">
+          <label for="fType">ประเภทเงินได้ (Type)</label>
+          <select id="fType"></select>
+          <input id="fTypeCustom" placeholder="ระบุประเภทเงินได้" style="margin-top:8px" hidden maxlength="100">
+        </div>
+        <div class="span-2">
+          <label>อัตราภาษี (Rate)</label>
+          <div class="chips" id="rateChips"></div>
+          <input id="fRateCustom" class="mono" inputmode="decimal" placeholder="เช่น 2 หรือ 1.5 (%)" style="margin-top:8px" hidden>
+        </div>
+        <div class="span-2">
+          <label for="fAmount">จำนวนเงิน (Amount) <small>บาท</small></label>
+          <input id="fAmount" class="mono" inputmode="decimal" placeholder="0.00" autocomplete="off">
+        </div>
+        <div class="span-2">
+          <label for="fWht">ภาษีที่หัก (WHT) <small>= Amount × Rate</small></label>
+          <input id="fWht" class="mono readonly-strong" readonly value="0.00">
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn" type="button" id="btnReset">ล้างข้อมูล</button>
+        <button class="btn primary" type="submit" id="btnSubmit">บันทึก</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- ===== List ===== -->
+  <section class="card">
+    <div class="card-head">
+      <h2 id="listTitle">รายการ</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <div class="tabs" id="monthTabs"></div>
+        <button class="btn small" type="button" id="btnRefresh">รีเฟรช</button>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Ref</th><th>Date</th><th>Payee ID</th><th>Name</th><th>Type</th>
+          <th class="num">Rate</th><th class="num">Amount</th><th class="num">WHT</th><th></th>
+        </tr></thead>
+        <tbody id="listBody"><tr><td colspan="9" class="empty">กำลังโหลดข้อมูล…</td></tr></tbody>
+        <tfoot id="listFoot"></tfoot>
+      </table>
+    </div>
+  </section>
+  </div>
+
+  <!-- ===== Payee tab ===== -->
+  <div id="viewPayee" class="view" hidden>
+  <section class="card">
+    <div class="card-head"><h2>เพิ่มผู้มีเงินได้ บุคคลธรรมดา (Payee 3)</h2></div>
+    <form class="card-body" id="payeeForm" novalidate>
+      <div class="grid">
+        <div>
+          <label for="pId">Payee ID</label>
+          <input id="pId" class="mono" maxlength="20" autocomplete="off" placeholder="เช่น 3ทป02">
+          <div class="hint" id="pIdHint">ห้ามซ้ำกับที่มีอยู่</div>
+        </div>
+        <div>
+          <label for="pPrefix">คำนำหน้า</label>
+          <select id="pPrefix"></select>
+          <input id="pPrefixCustom" placeholder="ระบุคำนำหน้า" style="margin-top:8px" hidden maxlength="30">
+        </div>
+        <div>
+          <label for="pFirst">ชื่อ</label>
+          <input id="pFirst" maxlength="80" autocomplete="off" placeholder="เช่น ทรงเกียรติ">
+        </div>
+        <div>
+          <label for="pLast">นามสกุล</label>
+          <input id="pLast" maxlength="80" autocomplete="off" placeholder="เช่น ปิลันธนโยธิน">
+        </div>
+        <div class="span-2">
+          <label for="pTax">เลขประจำตัวผู้เสียภาษีอากร <small>(เลขบัตรประชาชน 13 หลัก)</small></label>
+          <input id="pTax" class="mono" inputmode="numeric" maxlength="17" autocomplete="off" placeholder="0-0000-00000-00-0">
+          <div class="hint" id="pTaxHint"></div>
+        </div>
+        <div class="span-2"></div>
+        <div class="span-4">
+          <label for="pAddr">ที่อยู่ <small>(เลขที่ หมู่ ซอย ถนน)</small></label>
+          <input id="pAddr" maxlength="200" autocomplete="off" placeholder="เช่น 444 หมู่ 4">
+        </div>
+        <div>
+          <label for="pSub" id="pSubLabel">ตำบล / แขวง</label>
+          <input id="pSub" maxlength="80" autocomplete="off">
+        </div>
+        <div>
+          <label for="pDist" id="pDistLabel">อำเภอ / เขต</label>
+          <input id="pDist" maxlength="80" autocomplete="off">
+        </div>
+        <div>
+          <label for="pProv">จังหวัด</label>
+          <input id="pProv" maxlength="80" autocomplete="off" list="provList">
+        </div>
+        <div>
+          <label for="pZip">รหัสไปรษณีย์</label>
+          <input id="pZip" class="mono" inputmode="numeric" maxlength="5" autocomplete="off">
+        </div>
+        <div class="span-2">
+          <label for="pFullName">ชื่อสำหรับกรอกข้อมูล <small>(สร้างอัตโนมัติ แก้ไขได้)</small></label>
+          <input id="pFullName" maxlength="200">
+        </div>
+        <div class="span-2">
+          <label for="pFullAddr">ที่อยู่สำหรับกรอกข้อมูล <small>(สร้างอัตโนมัติ แก้ไขได้)</small></label>
+          <input id="pFullAddr" maxlength="300">
+        </div>
+        <div class="span-2">
+          <label for="pBank">ธนาคาร <small>(ไม่บังคับ)</small></label>
+          <input id="pBank" maxlength="60" autocomplete="off" list="bankList" placeholder="เช่น กรุงไทย">
+        </div>
+        <div class="span-2">
+          <label for="pAcct">เลขบัญชี <small>(ไม่บังคับ)</small></label>
+          <input id="pAcct" class="mono" inputmode="numeric" maxlength="24" autocomplete="off" placeholder="เช่น 1330062434">
+        </div>
+      </div>
+      <datalist id="provList"></datalist>
+      <datalist id="bankList"></datalist>
+      <div class="actions">
+        <button class="btn" type="button" id="pReset">ล้างข้อมูล</button>
+        <button class="btn primary" type="submit" id="pSubmit">เพิ่ม Payee</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <h2 id="payeeCount">รายชื่อ Payee 3</h2>
+      <input id="payeeSearch" placeholder="ค้นหา ID / ชื่อ / เลขผู้เสียภาษี" style="max-width:280px;min-height:34px;padding:6px 10px">
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ลำดับ</th><th>Payee ID</th><th>ชื่อสำหรับกรอกข้อมูล</th><th>เลขผู้เสียภาษี</th><th>ธนาคาร / เลขบัญชี</th><th>ที่อยู่</th><th></th></tr></thead>
+        <tbody id="payeeBody"><tr><td colspan="7" class="empty">กำลังโหลดข้อมูล…</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+  </div>
+</main>
+
+<!-- Confirm modal -->
+<div class="overlay" id="confirmOverlay" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+  <div class="modal">
+    <h3 id="confirmTitle">ยืนยันการบันทึกข้อมูล</h3>
+    <p>กรุณาตรวจสอบข้อมูลให้ถูกต้องก่อนกดยืนยัน</p>
+    <dl id="confirmList"></dl>
+    <div id="confirmWarn" class="hint warn" style="padding:10px 20px 0" hidden></div>
+    <div class="actions">
+      <button class="btn" type="button" id="btnCancel">ยกเลิก</button>
+      <button class="btn primary" type="button" id="btnConfirm">ยืนยัน</button>
+    </div>
+  </div>
+</div>
+
+<!-- API key modal -->
+<div class="overlay" id="keyOverlay" role="dialog" aria-modal="true" aria-labelledby="keyTitle">
+  <div class="modal">
+    <h3 id="keyTitle">ใส่รหัสเข้าใช้งาน</h3>
+    <p>รหัส (API key) ได้จากการรัน <span class="mono">setupApiKey()</span> ใน Apps Script — บันทึกไว้ในเบราว์เซอร์นี้เท่านั้น</p>
+    <div style="padding:14px 20px 0"><input id="keyInput" class="mono" type="password" autocomplete="off" placeholder="API key"></div>
+    <div class="actions" style="margin-top:14px">
+      <button class="btn" type="button" id="btnKeyCancel">ปิด</button>
+      <button class="btn primary" type="button" id="btnKeySave">บันทึกรหัส</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Bump PAGE_VERSION and both ?v= values together whenever index.html or app.js changes -->
+<script>
+  window.PAGE_VERSION = '6';
+  window.showSysError = function (msg) {
+    var b = document.getElementById('sysBanner');
+    if (!b) return;
+    b.hidden = false;
+    b.innerHTML = msg;
+  };
+  window.addEventListener('error', function (e) {
+    showSysError('เกิดข้อผิดพลาดในหน้าเว็บ: <span class="mono">' +
+      String(e.message || e.error || 'unknown').replace(/</g, '&lt;') + '</span><br>' +
+      'ลองกด <b>Ctrl+Shift+R</b> (Mac: <b>Cmd+Shift+R</b>) เพื่อโหลดใหม่ ถ้ายังเป็นอยู่ แจ้งข้อความนี้ให้ผู้ดูแล');
+  });
+</script>
+<script src="config.js?v=6"></script>
+<script src="app.js?v=6"></script>
+<script>
+  // app.js sets APP_VERSION when it loads. Missing or different = old/cached/not uploaded.
+  if (window.APP_VERSION !== window.PAGE_VERSION) {
+    showSysError('ไฟล์ <span class="mono">app.js</span> ไม่ตรงกับ <span class="mono">index.html</span> ' +
+      '(หน้าเว็บ v' + window.PAGE_VERSION + ', app.js ' + (window.APP_VERSION ? 'v' + window.APP_VERSION : 'เวอร์ชันเก่าหรือโหลดไม่ได้') + ')<br>' +
+      'ตรวจว่าอัปโหลด <b>index.html</b> และ <b>app.js</b> ขึ้น GitHub ครบทั้งสองไฟล์ รอ 1–2 นาที แล้วกด <b>Ctrl+Shift+R</b>');
+  }
+</script>
+</body>
+</html>
